@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Producto.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #b3ae60;}
+.s3 { color: #6aab73;}
+.s4 { color: #cf8e6d;}
+.s5 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Producto.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by lopez on 23-11-2024.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PRODUCTO_H</span>
+<span class="s2">#define </span><span class="s1">PRODUCTO_H</span>
+
+<span class="s2">#include </span><span class="s3">&lt;string&gt;</span>
+
+<span class="s4">class </span><span class="s1">Producto </span><span class="s5">{</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s4">int </span><span class="s1">id</span><span class="s5">;</span>
+    <span class="s1">std::string nombre</span><span class="s5">;</span>
+    <span class="s4">int </span><span class="s1">precio</span><span class="s5">;</span>
+
+<span class="s4">public</span><span class="s1">:</span>
+
+    <span class="s1">Producto</span><span class="s5">(</span><span class="s4">int </span><span class="s1">id</span><span class="s5">, </span><span class="s4">const </span><span class="s1">std::string</span><span class="s5">&amp; </span><span class="s1">nombre</span><span class="s5">, </span><span class="s4">int </span><span class="s1">precio</span><span class="s5">);</span>
+
+    <span class="s0">// getsets</span>
+    <span class="s4">int </span><span class="s1">getId</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s1">std::string getNombre</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s4">int </span><span class="s1">getPrecio</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+
+
+    <span class="s1">std::string toString</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+
+
+<span class="s5">};</span>
+
+<span class="s2">#endif</span></pre>
+</body>
+</html>

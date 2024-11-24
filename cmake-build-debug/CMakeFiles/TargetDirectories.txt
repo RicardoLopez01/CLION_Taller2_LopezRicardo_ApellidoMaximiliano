@@ -1,0 +1,3 @@
+C:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/cmake-build-debug/CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir
+C:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/cmake-build-debug/CMakeFiles/rebuild_cache.dir

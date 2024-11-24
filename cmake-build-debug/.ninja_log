@@ -1,0 +1,20 @@
+# ninja log v6
+59	163	7540969030739612	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/sistemaPedidos.cpp.obj	16c959678625398c
+49	165	7540969030629513	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/MinHeap.cpp.obj	cbf8b2e851cbae67
+24	166	7540969030389306	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/NodoAVL.cpp.obj	5c1469a75f18c38
+38	166	7540969030519420	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/AVL.cpp.obj	6d97216109046f86
+2	597	7540969030159093	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+21	555	7540974385492200	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj	470b53dacf211fbf
+21	509	7540974919286359	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj	470b53dacf211fbf
+4	516	7540974919126216	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+4	505	7540975218994416	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Pedido.cpp.obj	d7686492e4266400
+5	1543	7540990629165306	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Pedido.cpp.obj	d7686492e4266400
+14	1001	7541201850828143	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj	470b53dacf211fbf
+4	1033	7541201850734184	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+1033	1220	7541201861022671	Taller2_LopezRicardo_ApellidoMaximiliano.exe	d2d16db6b5288488
+7	683	7541202037336556	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+684	862	7541202044114304	Taller2_LopezRicardo_ApellidoMaximiliano.exe	d2d16db6b5288488
+4	562	7541202686960599	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+563	691	7541202692547492	Taller2_LopezRicardo_ApellidoMaximiliano.exe	d2d16db6b5288488
+6	767	7541204819802286	CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj	b04f0b5f6edc0660
+767	933	7541204827414831	Taller2_LopezRicardo_ApellidoMaximiliano.exe	d2d16db6b5288488

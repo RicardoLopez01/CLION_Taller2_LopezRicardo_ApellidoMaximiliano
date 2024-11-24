@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Pedido.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #b3ae60;}
+.s3 { color: #6aab73;}
+.s4 { color: #bcbec4;}
+.s5 { color: #cf8e6d;}
+.s6 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Pedido.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by lopez on 23-11-2024.</span>
+<span class="s0">//</span>
+
+<span class="s2">#include </span><span class="s3">&quot;Pedido.h&quot;</span>
+
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+
+<span class="s1">Pedido::Pedido</span><span class="s4">(</span><span class="s5">int </span><span class="s1">id</span><span class="s4">, </span><span class="s5">const </span><span class="s1">std::string</span><span class="s4">&amp; </span><span class="s1">nombre</span><span class="s4">, </span><span class="s5">const </span><span class="s1">std::string</span><span class="s4">&amp; </span><span class="s1">apellido</span><span class="s4">, </span><span class="s5">const </span><span class="s1">std::vector</span><span class="s4">&lt;</span><span class="s1">std::string</span><span class="s4">&gt;&amp; </span><span class="s1">productos</span><span class="s4">, </span><span class="s5">int </span><span class="s1">horaPedido</span><span class="s4">)</span>
+    <span class="s1">: id</span><span class="s4">(</span><span class="s1">id</span><span class="s4">), </span><span class="s1">nombreCliente</span><span class="s4">(</span><span class="s1">nombre</span><span class="s4">), </span><span class="s1">apellidoCliente</span><span class="s4">(</span><span class="s1">apellido</span><span class="s4">), </span><span class="s1">productos</span><span class="s4">(</span><span class="s1">productos</span><span class="s4">), </span><span class="s1">horaPedido</span><span class="s4">(</span><span class="s1">horaPedido</span><span class="s4">), </span><span class="s1">estado</span><span class="s4">(</span><span class="s5">true</span><span class="s4">), </span><span class="s1">prioridad</span><span class="s4">(</span><span class="s6">0</span><span class="s4">) {}</span>
+
+<span class="s0">// Getters</span>
+<span class="s5">int </span><span class="s1">Pedido::getId</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{</span><span class="s5">return </span><span class="s1">id</span><span class="s4">;}</span>
+
+<span class="s1">std::string Pedido::getNombreCliente</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">nombreCliente</span><span class="s4">; }</span>
+
+<span class="s1">std::string Pedido::getApellidoCliente</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">apellidoCliente</span><span class="s4">; }</span>
+
+<span class="s1">std::vector</span><span class="s4">&lt;</span><span class="s1">std::string</span><span class="s4">&gt; </span><span class="s1">Pedido::getProductos</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">productos</span><span class="s4">; }</span>
+
+<span class="s5">int </span><span class="s1">Pedido::getHoraPedido</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">horaPedido</span><span class="s4">; }</span>
+
+<span class="s5">bool </span><span class="s1">Pedido::getEstado</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">estado</span><span class="s4">; }</span>
+
+<span class="s5">int </span><span class="s1">Pedido::getPrioridad</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">prioridad</span><span class="s4">; }</span>
+
+
+
+<span class="s0">// sets</span>
+<span class="s5">void </span><span class="s1">Pedido::setEstado</span><span class="s4">(</span><span class="s5">bool </span><span class="s1">nuevoEstado</span><span class="s4">) { </span><span class="s1">estado </span><span class="s4">= </span><span class="s1">nuevoEstado</span><span class="s4">; }</span>
+
+<span class="s5">void </span><span class="s1">Pedido::calcularPrioridad</span><span class="s4">(</span><span class="s5">int </span><span class="s1">horaActual</span><span class="s4">) {</span>
+    <span class="s5">int </span><span class="s1">tiempoEspera </span><span class="s4">= </span><span class="s1">horaActual </span><span class="s4">- </span><span class="s1">horaPedido</span><span class="s4">;</span>
+    <span class="s1">prioridad </span><span class="s4">= </span><span class="s1">productos</span><span class="s4">.</span><span class="s1">size</span><span class="s4">() * </span><span class="s1">tiempoEspera</span><span class="s4">; </span><span class="s0">// CPP * (HA - HP)</span>
+    <span class="s4">}</span>
+
+<span class="s0">// Métodos auxiliares</span>
+<span class="s1">std::string Pedido::toString</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{</span>
+    <span class="s1">std::cout </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;ID: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">id </span><span class="s4">&lt;&lt; </span><span class="s1">std::endl</span><span class="s4">;</span>
+    <span class="s1">std::cout </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;Nombre: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">nombreCliente </span><span class="s4">&lt;&lt; </span><span class="s1">std::endl</span><span class="s4">;</span>
+    <span class="s1">std::cout </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;Apellido: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">apellidoCliente </span><span class="s4">&lt;&lt; </span><span class="s1">std::endl</span><span class="s4">;</span>
+    <span class="s1">std::cout </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;Estado: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">estado </span><span class="s4">&lt;&lt; </span><span class="s1">std::endl</span><span class="s4">;</span>
+    <span class="s0">// std::cout &lt;&lt; &quot;Productos: &quot; &lt;&lt; productos &lt;&lt; std::endl;</span>
+
+<span class="s4">}</span>
+</pre>
+</body>
+</html>

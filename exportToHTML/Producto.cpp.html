@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Producto.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #b3ae60;}
+.s3 { color: #6aab73;}
+.s4 { color: #bcbec4;}
+.s5 { color: #cf8e6d;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Producto.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by lopez on 23-11-2024.</span>
+<span class="s0">//</span>
+
+<span class="s2">#include </span><span class="s3">&quot;Producto.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&lt;sstream&gt;</span>
+
+
+<span class="s1">Producto::Producto</span><span class="s4">(</span><span class="s5">int </span><span class="s1">id</span><span class="s4">, </span><span class="s5">const </span><span class="s1">std::string</span><span class="s4">&amp; </span><span class="s1">nombre</span><span class="s4">, </span><span class="s5">int </span><span class="s1">precio</span><span class="s4">)</span>
+    <span class="s1">: id</span><span class="s4">(</span><span class="s1">id</span><span class="s4">), </span><span class="s1">nombre</span><span class="s4">(</span><span class="s1">nombre</span><span class="s4">), </span><span class="s1">precio</span><span class="s4">(</span><span class="s1">precio</span><span class="s4">) {}</span>
+
+
+<span class="s5">int </span><span class="s1">Producto::getId</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">id</span><span class="s4">; }</span>
+
+<span class="s1">std::string Producto::getNombre</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">nombre</span><span class="s4">; }</span>
+
+<span class="s5">int </span><span class="s1">Producto::getPrecio</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{ </span><span class="s5">return </span><span class="s1">precio</span><span class="s4">; }</span>
+
+
+<span class="s1">std::string Producto::toString</span><span class="s4">() </span><span class="s5">const </span><span class="s4">{</span>
+    <span class="s1">std::stringstream ss</span><span class="s4">;</span>
+    <span class="s1">ss </span><span class="s4">&lt;&lt; </span><span class="s1">id </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;, &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">nombre </span><span class="s4">&lt;&lt; </span><span class="s3">&quot;, &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">precio</span><span class="s4">;</span>
+    <span class="s5">return </span><span class="s1">ss</span><span class="s4">.</span><span class="s1">str</span><span class="s4">();</span>
+<span class="s4">}</span>
+</pre>
+</body>
+</html>

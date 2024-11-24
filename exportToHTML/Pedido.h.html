@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Pedido.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #b3ae60;}
+.s3 { color: #6aab73;}
+.s4 { color: #cf8e6d;}
+.s5 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Pedido.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by lopez on 23-11-2024.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PEDIDO_H</span>
+<span class="s2">#define </span><span class="s1">PEDIDO_H</span>
+<span class="s2">#include </span><span class="s3">&lt;string&gt;</span>
+<span class="s2">#include </span><span class="s3">&lt;vector&gt;</span>
+<span class="s2">#include </span><span class="s3">&lt;ctime&gt;</span>
+
+<span class="s4">class </span><span class="s1">Pedido </span><span class="s5">{</span>
+
+    <span class="s4">int </span><span class="s1">id</span><span class="s5">;</span>
+    <span class="s1">std::string nombreCliente</span><span class="s5">;</span>
+    <span class="s1">std::string apellidoCliente</span><span class="s5">;</span>
+    <span class="s1">std::vector</span><span class="s5">&lt;</span><span class="s1">std::string</span><span class="s5">&gt; </span><span class="s1">productos</span><span class="s5">;</span>
+    <span class="s1">time_t  horaPedido</span><span class="s5">;   </span><span class="s0">// Este es el formato que sale en las consideraciones.</span>
+    <span class="s4">bool </span><span class="s1">estado</span><span class="s5">;</span>
+    <span class="s4">int  </span><span class="s1">prioridad</span><span class="s5">;</span>
+
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">Pedido</span><span class="s5">(</span><span class="s4">int </span><span class="s1">id</span><span class="s5">, </span><span class="s4">const </span><span class="s1">std::string</span><span class="s5">&amp; </span><span class="s1">nombre</span><span class="s5">, </span><span class="s4">const </span><span class="s1">std::string</span><span class="s5">&amp; </span><span class="s1">apellido</span><span class="s5">, </span><span class="s4">const </span><span class="s1">std::vector</span><span class="s5">&lt;</span><span class="s1">std::string</span><span class="s5">&gt;&amp; </span><span class="s1">productos</span><span class="s5">, </span><span class="s4">int </span><span class="s1">horaPedido</span><span class="s5">);</span>
+
+
+    <span class="s0">//gets</span>
+    <span class="s4">int </span><span class="s1">getId</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s1">std::string getNombreCliente</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s1">std::string getApellidoCliente</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s1">std::vector</span><span class="s5">&lt;</span><span class="s1">std::string</span><span class="s5">&gt; </span><span class="s1">getProductos</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s4">int </span><span class="s1">getHoraPedido</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s4">bool </span><span class="s1">getEstado</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+    <span class="s4">int </span><span class="s1">getPrioridad</span><span class="s5">() </span><span class="s4">const</span><span class="s5">;</span>
+
+    <span class="s0">// sets</span>
+    <span class="s4">void </span><span class="s1">setEstado</span><span class="s5">(</span><span class="s4">bool </span><span class="s1">nuevoEstado</span><span class="s5">);</span>
+    <span class="s4">void </span><span class="s1">calcularPrioridad</span><span class="s5">(</span><span class="s4">int </span><span class="s1">horaActual</span><span class="s5">);</span>
+
+
+    <span class="s1">std::string toString</span><span class="s5">() </span><span class="s4">const</span><span class="s5">; </span><span class="s0">// imprime pedido</span>
+    <span class="s5">};</span>
+
+<span class="s2">#endif </span><span class="s0">//PEDIDO_H</span>
+</pre>
+</body>
+</html>
