@@ -61,12 +61,6 @@ build CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Pedido.cpp.obj: CX
   OBJECT_DIR = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir
   OBJECT_FILE_DIR = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir
 
-build CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/NodoAVL.cpp.obj: CXX_COMPILER__Taller2_LopezRicardo_ApellidoMaximiliano_unscanned_Debug C$:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/NodoAVL.cpp || cmake_object_order_depends_target_Taller2_LopezRicardo_ApellidoMaximiliano
-  DEP_FILE = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir\NodoAVL.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir
-  OBJECT_FILE_DIR = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir
-
 build CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/AVL.cpp.obj: CXX_COMPILER__Taller2_LopezRicardo_ApellidoMaximiliano_unscanned_Debug C$:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/AVL.cpp || cmake_object_order_depends_target_Taller2_LopezRicardo_ApellidoMaximiliano
   DEP_FILE = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir\AVL.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
@@ -99,7 +93,7 @@ build CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj: 
 #############################################
 # Link the executable Taller2_LopezRicardo_ApellidoMaximiliano.exe
 
-build Taller2_LopezRicardo_ApellidoMaximiliano.exe: CXX_EXECUTABLE_LINKER__Taller2_LopezRicardo_ApellidoMaximiliano_Debug CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Pedido.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/NodoAVL.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/AVL.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/MinHeap.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/sistemaPedidos.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj
+build Taller2_LopezRicardo_ApellidoMaximiliano.exe: CXX_EXECUTABLE_LINKER__Taller2_LopezRicardo_ApellidoMaximiliano_Debug CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/main.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Pedido.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/AVL.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/MinHeap.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/sistemaPedidos.cpp.obj CMakeFiles/Taller2_LopezRicardo_ApellidoMaximiliano.dir/Producto.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Taller2_LopezRicardo_ApellidoMaximiliano.dir

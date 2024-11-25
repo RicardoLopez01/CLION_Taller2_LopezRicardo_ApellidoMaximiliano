@@ -1,4 +1,4 @@
-1,Hamburguesa Clásica,6500
+1,Hamburguesa Clasica,6500
 2,Hamburguesa Doble,7500
 3,Hamburguesa BBQ,8000
 4,Papas Fritas Grandes,3000

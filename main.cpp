@@ -1,26 +1,49 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <vector>
-
 #include "AVL.h"
 #include "MinHeap.h"
 #include "Pedido.h"
 #include "Producto.h"
+#include <filesystem>
+#include "sistemaPedidos.h"
+
+
+
 
 //Funciones para el menu principal.
-    void crearPedido();
+  /*  void crearPedidoUsuario();
     void entregarPedido();
     void cancelarPedido();
     void buscarPedido();
     void menuEstadisticas();
     void cerrarSistema();
 
-
+¨*/
 
 
     void mostrarMenu() {
+        const std::string archivo = "productos_grill_of_victory.txt";
+
+        // Crear instancia
+        SistemaPedidos sistema;
+
+
+        // Verificar si el archivo existe antes de cargar
+        if (!std::filesystem::exists(archivo)) {
+            std::cerr << "Error: No se encontró el archivo '" << archivo << "'. Asegúrese de que esté en la carpeta correcta.\n";
+            return 1; // Salir del programa con error
+        }
+
+        // Intentar cargar productos
+        try {
+            sistema.cargarProductosDesdeArchivo(archivo);
+            std::cout << "Productos cargados automáticamente desde '" << archivo << "'.\n";
+        } catch (const std::exception& e) {
+            std::cerr << "Error al cargar los productos: " << e.what() << "\n";
+            return 1; // Salir del programa con error
+        }
         int opcion;
 
 
@@ -37,7 +60,7 @@
 
         switch (opcion) { // Menu principal
             case 1:
-                crearPedido();
+                sistemaPedidos.crear
             break;
 
             case 2:
@@ -69,7 +92,7 @@
 
 
 
-        void crearPedido(){
+        void crearPedidoUsuario(){
 
         }
 
@@ -94,118 +117,92 @@
         }
 
 
-
+        const std::string archivo = "productos_grill_of_victory.txt";
+        sistemaPedidos.cargarProductosDesdeArchivo(archivo);
+        std::cout << "Productos cargados automáticamente desde '" << archivo << "'.\n";
 
     int main() {
 
         AVL avl;
         MinHeap minHeap;
+        mostrarMenu();
 
 
 
 
 
-
-
-        // Este codigo es muy parecido la usado en el taller anterior, si bien el codigo funciona bien
-        // tengo un error de que solamente lo lee cuando pones exactamente la direccion raiz del archivo txt
-        // Si es posible reemplazar la direccion por la cual tenga en su computador, porfavor :D
-
-        //ID,Nombre del Producto,Precio (CLP)
-        std::ifstream archivoProductos("C:/Users/lopez/CLionProjects/Taller2_LopezRicardo-ApellidoMaximiliano/productos_grill_of_victory.txt"); //Aca poner la direccion raiz
-        if (!archivoProductos.is_open()) {
-            std::cerr << "No se pudo abrir el archivo de productos" << std::endl;
-            return 1;
-        }
-
-        std::vector<Producto> productos;
-        std::string linea;
-
-
-
-        while (std::getline(archivoProductos, linea)) {
-            std::stringstream ss(linea);
-            int id, precio;
-            std::string nombre;
-
-
-            if (ss >> id) {
-                ss.ignore();
-                std::getline(ss, nombre, ','); // Leer hasta la coma
-                ss >> precio;
-
-                // crea objeto Producto y agrega al vector
-                Producto producto(id, nombre, precio);
-                productos.push_back(producto);
-            } else {
-                std::cerr << "Error al procesar la linea: " << linea << std::endl;
-            }
-        }
-
-        // Mostrar los productos leídos
-        for (const Producto& p : productos) {
-            std::cout << p.toString() << std::endl;
-        }
-
-
-
-
-
-
-
-
-         mostrarMenu();
-
-
-
-
-
-
-
-         archivoProductos.close();
         return 0;
-
     }
 
 
 
 
 
-    Pedido crearPedidoDelUsuario(const std::vector<Producto>& productos) {
-        std::string nombre;
-        std::string apellido;
-        std::vector<Producto> productosSeleccionados;
-        int idProducto;
+    Pedido crearPedidoUsuario(const std::vector<Producto>& productos) {
+    std::string nombre, apellido;
+    std::vector<std::string> productosSeleccionados;
+    int idProducto;
 
-        std::cout << "Ingrese el nombre del cliente: ";
-        std::cin >> nombre;
-        std::cout << "Ingrese el apellido del cliente: ";
-        std::cin >> apellido;
+    std::cout << "Ingrese el nombre del cliente: ";
+    std::cin >> nombre;
+    std::cout << "Ingrese el apellido del cliente: ";
+    std::cin >> apellido;
 
-        std::cout << "Productos disponibles: ";
-        for (const Producto& p : productos) {
-            std::cout << p.toString() << std::endl;
-        }
-
-        std::cout << "Ingrese los IDs de los productos seleccionados (0 para terminar): " << std::endl;
-        while (true) {
-            std::cin >> idProducto;
-            if (idProducto == 0) break;
-            auto it = std::find_if(productos.begin(), productos.end(), [idProducto](const Producto& p) {
-                return p.getId() == idProducto;
-            });
-            if (it != productos.end()) {
-                productosSeleccionados.push_back(*it);
-            } else {
-                std::cout << "Producto no existente. Intente una opcion valida." << std::endl;
-            }
-        }
-
-        //Pedido nuevoPedido(0,nombre, apellido, productosSeleccionados,nullptr);
-        //std::cout << "Pedido creado:\n" << nuevoPedido.toString() << std::endl;
-        //return nuevoPedido;
-
-
-
-
+    std::cout << "Productos disponibles:\n";
+    for (const Producto& p : productos) {
+        std::cout << p.toString() << std::endl;
     }
+
+    std::cout << "Ingrese los IDs de los productos seleccionados (0 para terminar): " << std::endl;
+    while (true) {
+        std::cin >> idProducto;
+        if (idProducto == 0) break;
+        auto it = std::find_if(productos.begin(), productos.end(), [idProducto](const Producto& p) {
+            return p.getId() == idProducto;
+        });
+        if (it != productos.end()) {
+            productosSeleccionados.push_back(it->getNombre());
+        } else {
+            std::cout << "ID de producto no válido. Intente nuevamente." << std::endl;
+        }
+    }
+
+    int horaActual = static_cast<int>(time(nullptr));
+    Pedido nuevoPedido(1, nombre, apellido, productosSeleccionados, horaActual);
+    std::cout << "Pedido creado:\n" << nuevoPedido.toString() << std::endl;
+    return nuevoPedido;
+}
+
+std::vector<Pedido> generarPedidosAleatorios(int cantidad, const std::vector<Producto>& productos) {
+    std::vector<Pedido> pedidos;
+    std::vector<std::string> nombres = {"Juan", "Ana", "Luis", "Maria", "Carlos"};
+    std::vector<std::string> apellidos = {"Perez", "Lopez", "Gomez", "Diaz", "Torres"};
+
+    srand(time(nullptr)); // Inicializar semilla aleatoria
+
+    for (int i = 0; i < cantidad; ++i) {
+        std::string nombre = nombres[rand() % nombres.size()];
+        std::string apellido = apellidos[rand() % apellidos.size()];
+
+        int numProductos = rand() % 5 + 1; // 1 a 5 productos
+        std::vector<std::string> productosSeleccionados;
+
+        for (int j = 0; j < numProductos; ++j) {
+            productosSeleccionados.push_back(productos[rand() % productos.size()].getNombre());
+        }
+
+        int horaActual = static_cast<int>(time(nullptr));
+        pedidos.emplace_back(i + 1, nombre, apellido, productosSeleccionados, horaActual);
+    }
+
+    return pedidos;
+}
+
+void procesarPedidos(const std::vector<Pedido>& pedidos, AVL& avl, MinHeap& minHeap) {
+    for (const Pedido& pedido : pedidos) {
+        avl.insertar(pedido);
+        if (pedido.getPrioridad() > 0) {
+            minHeap.insertar(pedido);
+        }
+    }
+}

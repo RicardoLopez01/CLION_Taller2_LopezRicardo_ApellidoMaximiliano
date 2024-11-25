@@ -3,8 +3,7 @@
 //
 
 #include "Pedido.h"
-
-#include <iostream>
+#include <sstream>
 
 Pedido::Pedido(int id, const std::string& nombre, const std::string& apellido, const std::vector<std::string>& productos, int horaPedido)
     : id(id), nombreCliente(nombre), apellidoCliente(apellido), productos(productos), horaPedido(horaPedido), estado(true), prioridad(0) {}
@@ -36,10 +35,18 @@ void Pedido::calcularPrioridad(int horaActual) {
 
 // Métodos auxiliares
 std::string Pedido::toString() const {
-    std::cout << "ID: " << id << std::endl;
-    std::cout << "Nombre: " << nombreCliente << std::endl;
-    std::cout << "Apellido: " << apellidoCliente << std::endl;
-    std::cout << "Estado: " << estado << std::endl;
-    // std::cout << "Productos: " << productos << std::endl;
+    std::ostringstream os;
+    os << "ID: " << id << "\n"
+       << "Nombre: " << nombreCliente << "\n"
+       << "Apellido: " << apellidoCliente << "\n"
+       << "Estado: " << (estado ? "Activo" : "Completado") << "\n"
+       << "Hora del pedido: " << horaPedido << "\n"
+       << "Prioridad: " << prioridad << "\n"
+       << "Productos:\n";
 
+    for (const auto& producto : productos) {
+        os << "  - " << producto << "\n";
+    }
+
+    return os.str();
 }
