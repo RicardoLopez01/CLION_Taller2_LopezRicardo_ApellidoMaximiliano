@@ -13,14 +13,12 @@
 
 
 //Funciones para el menu principal.
-  /*  void crearPedidoUsuario();
+    void crearPedidoUsuario();
     void entregarPedido();
     void cancelarPedido();
     void buscarPedido();
     void menuEstadisticas();
     void cerrarSistema();
-
-¨*/
 
 
     void mostrarMenu() {
@@ -47,20 +45,26 @@
         int opcion;
 
 
-        std::cout << "************************";
-        std::cout << "     Menu principal";
-        std::cout << "************************";
+        std::cout << "************************\n";
+        std::cout << "     Menu principal\n";
+        std::cout << "************************\n";
+        std::cout << "1) Crear pedido\n";
+        std::cout << "2) Entregar pedido\n";
+        std::cout << "3) Cancelar pedido\n";
+        std::cout << "4) Buscar pedido\n";
+        std::cout << "5) Menu estadisticas\n";
+        std::cout << "6) Cerrar sistema\n";
         std::cout << "Ingrese su opción: ";
-        std::cout << "1) Crear pedido ";
-        std::cout << "2) Entregar pedido ";
-        std::cout << "3) Cancelar pedido ";
-        std::cout << "4) Buscar pedido ";
-        std::cout << "5) Menu estadisticas ";
-        std::cout << "6) Cerrar sistema ";
 
         switch (opcion) { // Menu principal
             case 1:
-                sistemaPedidos.crear
+                if(productos.empty()) {
+                    std::cout<<"No hay productos cargados.\n"
+                }else {
+                    Pedido nuevoPedido = crearPedidoUsuario();
+                    procesarPedidos({nuevoPedido});
+                    std::cout<<"Pedido creado\n";
+                }
             break;
 
             case 2:
@@ -113,7 +117,7 @@
         }
 
         void cerrarSistema() {
-
+            std::cout<<"Saliendo del sistema...\n";
         }
 
 

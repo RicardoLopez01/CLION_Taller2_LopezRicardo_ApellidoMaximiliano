@@ -63,6 +63,10 @@ std::vector<Pedido> SistemaPedidos::generarPedidosAleatorios(int cantidad) {
 
     srand(time(nullptr)); // Inicializar semilla aleatoria
 
+    if(productosCargados.empty()) {
+        std::cout << "No productos cargados encontrado." << std::endl;
+        return pedidos;
+    }
     for (int i = 0; i < cantidad; ++i) {
         std::string nombre = nombres[rand() % nombres.size()];
         std::string apellido = apellidos[rand() % apellidos.size()];
@@ -83,6 +87,7 @@ std::vector<Pedido> SistemaPedidos::generarPedidosAleatorios(int cantidad) {
 
 void sistemaPedidos::procesarPedidos(const std::vector<Pedido>& pedidos) {
     for (const Pedido& pedido : pedidos) {
+        calcularPrioridadPedido(static_cast<int>(time(nullptr)));
         avl.insertar(pedido);
         if (pedido.getPrioridad() > 0) {
             minHeap.insertar(pedido);
@@ -99,7 +104,6 @@ void sistemaPedidos::mostrarMinHeap() const {
 }
 
 void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
-
     //Este codigo es reciclado del profesor, deberia funcar, pero primero revisemos si funciona con el nombre del archivo en si en vez de la ruta
     //ID,Nombre del Producto,Precio (CLP)
     std::ifstream archivoProductos("productos_grill_of_victory.txt");
@@ -109,6 +113,7 @@ void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
     }
 
     std::vector<Producto> productos;
+    productos.clear();
     std::string linea;
 
     while (std::getline(archivoProductos, linea)) {
@@ -137,21 +142,20 @@ void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
     for (const Producto& p : productos) {
         std::cout << p.toString() << std::endl;
     }
+}
+size_t sistemaPedidos::totalPedidos() const {
+    return historialPedidos.size() + heapPedidos.size();
+}
 
+size_t sistemaPedidos::pedidosEntregados() const {
+    return std::count_if(historialPedidos.begin(), historialPedidos.end(), [](const Pedido& pedido) {
+        return !pedido.getEstado();
+    });
+}
 
-    size_t sistemaPedidos::totalPedidos() const {
-        return historialPedidos.size() + heapPedidos.size();
-    }
-
-    size_t sistemaPedidos::pedidosEntregados() const {
-        return std::count_if(historialPedidos.begin(), historialPedidos.end(), [](const Pedido& pedido) {
-            return !pedido.getEstado();
-        });
-    }
-
-    size_t sistemaPedidos::pedidosCancelados() const {
-        return historialPedidos.size() - pedidosEntregados();
-    }
+size_t sistemaPedidos::pedidosCancelados() const {
+    return historialPedidos.size() - pedidosEntregados();
+}
 
 
 

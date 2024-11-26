@@ -4,9 +4,10 @@
 
 #include "Pedido.h"
 #include <sstream>
+#include <algorithm>
 
 Pedido::Pedido(int id, const std::string& nombre, const std::string& apellido, const std::vector<std::string>& productos, int horaPedido)
-    : id(id), nombreCliente(nombre), apellidoCliente(apellido), productos(productos), horaPedido(horaPedido), estado(true), prioridad(0) {}
+    : id(id), nombreCliente(nombre), apellidoCliente(apellido), productos(productos), horaPedido(horaPedido), estado("Pendiente"), prioridad(0) {}
 
 // Getters
 int Pedido::getId() const {return id;}
@@ -19,14 +20,14 @@ std::vector<std::string> Pedido::getProductos() const { return productos; }
 
 int Pedido::getHoraPedido() const { return horaPedido; }
 
-bool Pedido::getEstado() const { return estado; }
+std::string Pedido::getEstado() const { return estado; }
 
 int Pedido::getPrioridad() const { return prioridad; }
 
 
 
 // sets
-void Pedido::setEstado(bool nuevoEstado) { estado = nuevoEstado; }
+void Pedido::setEstado(std::string nuevoEstado) { estado = nuevoEstado; }
 
 void Pedido::calcularPrioridad(int horaActual) {
     int tiempoEspera = horaActual - horaPedido;
@@ -49,4 +50,25 @@ std::string Pedido::toString() const {
     }
 
     return os.str();
+}
+enum class EstadoPedido {
+    Pendiente,
+    enPreparacion,
+    Completado,
+    Cancelado
+};
+
+enum class TipoCliente {
+    Presencial,
+    Repartidor
+};
+TipoCliente tipoCliente;
+
+void Pedido::agregarProducto(const std::string& producto) {
+    productos.push_back(producto);
+}
+
+void Pedido::eliminarProducto(const std::string& producto) {
+    auto it = std::find(productos.begin(), productos.end(), producto);
+    if (it != productos.end()) productos.erase(it);
 }

@@ -15,7 +15,7 @@ class Pedido {
     std::string apellidoCliente;
     std::vector<std::string> productos;
     time_t  horaPedido;   // Este es el formato que sale en las consideraciones.
-    bool estado;
+    std::string estado;
     int  prioridad;
 
 public:
@@ -28,15 +28,20 @@ public:
     std::string getApellidoCliente() const;
     std::vector<std::string> getProductos() const;
     int getHoraPedido() const;
-    bool getEstado() const;
+    std::string getEstado() const;
     int getPrioridad() const;
+    void agregarProducto(const std::string &producto);
+    void eliminarProducto(const std::string &producto);
 
     // sets
-    void setEstado(bool nuevoEstado);
+    void setEstado(std::string nuevoEstado);
     void calcularPrioridad(int horaActual);
 
 
     std::string toString() const; // imprime pedido
-    };
+
+
+
+};
 
 #endif //PEDIDO_H
