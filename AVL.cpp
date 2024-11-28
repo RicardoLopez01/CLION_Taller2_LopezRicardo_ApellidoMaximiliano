@@ -125,7 +125,7 @@ void AVL::insertar(const Pedido& pedido) {
 void AVL::actualizarEstado(int id, const std::string& nuevoEstado) {
     auto nodo = buscarNodo(raiz, id);
     if (!nodo) throw std::runtime_error("Pedido no encontrado");
-    nodo->pedido.setEstado(nuevoEstado.data()); // Supone que Pedido tiene un método setEstado()
+    nodo->pedido.setEstado(nuevoEstado.data());
 }
 
 

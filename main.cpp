@@ -25,7 +25,7 @@
         const std::string archivo = "productos_grill_of_victory.txt";
 
         // Crear instancia
-        SistemaPedidos sistema;
+        sistemaPedidos sistema;
 
 
         // Verificar si el archivo existe antes de cargar
@@ -59,7 +59,7 @@
         switch (opcion) { // Menu principal
             case 1:
                 if(productos.empty()) {
-                    std::cout<<"No hay productos cargados.\n"
+                    std::cout<<"No hay productos cargados.\n";
                 }else {
                     Pedido nuevoPedido = crearPedidoUsuario();
                     procesarPedidos({nuevoPedido});
