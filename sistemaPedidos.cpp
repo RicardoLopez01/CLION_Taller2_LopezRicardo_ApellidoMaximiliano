@@ -10,6 +10,8 @@
 #include <sstream>
 #include "Pedido.h"
 #include "Producto.h"
+#include <filesystem>
+
 
 sistemaPedidos::sistemaPedidos(const std::vector<Producto>& productos)
     : productosCargados(productos) {}
@@ -99,24 +101,53 @@ void sistemaPedidos::mostrarMinHeap() const {
 }
 
 void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
-    std::ifstream archivoProductos(archivo);
-    if (!archivoProductos.is_open()) {
-        std::cerr << "No se pudo abrir el archivo de productos" << std::endl;
+    // Este código es reciclado del profesor, pero revisaremos si funciona con el nombre del archivo.
+    // ID, Nombre del Producto, Precio (CLP)
+
+
+    if (!std::filesystem::exists(archivo)) {
+        std::cerr << "El archivo no existe en la ruta: " << archivo << std::endl;
         return;
     }
 
+    // Usamos el archivo directamente con su nombre correcto.
+    std::ifstream archivoProductos(archivo);  // Usamos la variable "archivo" para poner el nombre segun corresponda "productos_grill_of_victory.txt"
+
+    if (!archivoProductos.is_open()) {
+        std::cerr << "No se pudo abrir el archivo: " << archivo << std::endl;
+        return;
+    }
+
+    std::vector<Producto> productos;
+    productos.clear();  // Aseguramos que el vector este vacío
     std::string linea;
+
+    // Leemos linea por linea
     while (std::getline(archivoProductos, linea)) {
-        std::stringstream ss(linea);
+        std::stringstream ss(linea);  // Usamos stringstream para dividir
         int id, precio;
         std::string nombre;
 
+        // se lee
         if (ss >> id) {
-            ss.ignore();
-            std::getline(ss, nombre, ',');
-            ss >> precio;
+            ss.ignore();  // Ignoramos la coma despues del ID
+            std::getline(ss, nombre, ',');  // Leemos nombre hasta la coma
+            ss >> precio;  // Leemos el precio hasta
+
             Producto producto(id, nombre, precio);
-            productosCargados.push_back(producto);
+            productos.push_back(producto);  // Añadimos el producto al vector
+        } else {
+            std::cerr << "Error al leer la línea: " << linea << std::endl;
         }
+    }
+
+    archivoProductos.close();  // Cerramos el archivo
+
+    // Almacenamos los productos cargados en el sistema
+    this->productosCargados = productos;
+
+
+    for (const Producto& p : productos) {
+        std::cout << p.toString() << std::endl;
     }
 }
