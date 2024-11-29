@@ -24,6 +24,7 @@ int main() {
     int opcion = 0;
 
     do {
+        cout << "" << endl;
         std::cout << "=**** Sistema de Gestion de Pedidos ****=\n";
         std::cout << "Seleccione una opcion: ";
         std::cout << "1) Crear un pedido de usuario\n";

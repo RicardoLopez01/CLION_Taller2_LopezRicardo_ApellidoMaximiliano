@@ -113,8 +113,10 @@ void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
     // Usamos el archivo directamente con su nombre correcto.
     std::ifstream archivoProductos(archivo);  // Usamos la variable "archivo" para poner el nombre segun corresponda "productos_grill_of_victory.txt"
 
+
     if (!archivoProductos.is_open()) {
-        std::cerr << "No se pudo abrir el archivo: " << archivo << std::endl;
+        std::cerr << "No se pudo abrir el archivo productos_grill_of_victory.txt." << std::endl;
+        std::cerr << "Asegurate de que el archivo este en la misma carpeta que el ejecutable." << std::endl;
         return;
     }
 
