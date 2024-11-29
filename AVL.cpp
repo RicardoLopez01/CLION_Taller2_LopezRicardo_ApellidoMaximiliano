@@ -47,7 +47,7 @@ std::shared_ptr<NodoAVL> AVL::insertarNodo(const std::shared_ptr<NodoAVL>& nodo,
     } else if (pedido.getId() > nodo->pedido.getId()) {
         nodo->derecha = insertarNodo(nodo->derecha, pedido);
     } else {
-        return nodo; // No se permiten duplicados
+        return nodo; // No se permiten duplicados aca
     }
 
     nodo->altura = std::max(obtenerAltura(nodo->izquierda), obtenerAltura(nodo->derecha)) + 1;
@@ -87,7 +87,7 @@ std::shared_ptr<NodoAVL> AVL::eliminarNodo(const std::shared_ptr<NodoAVL>& nodo,
         nodo->pedido = siguiente->pedido;
         nodo->derecha = eliminarNodo(nodo->derecha, siguiente->pedido.getId());
     }
-    nodo->altura = std::max(obtenerAltura(nodo->izquierda) obtenerAltura(nodo->derecha)) + 1;
+    nodo->altura = std::max(obtenerAltura(nodo->izquierda), obtenerAltura(nodo->derecha)) + 1;
     int balance = obtenerBalance(nodo);
     if (balance > 1 && obtenerBalance(nodo->izquierda) >= 0) return rotacionDerecha(nodo);
     if (balance > 1 && obtenerBalance(nodo->izquierda) < 0) {
@@ -109,9 +109,14 @@ std::shared_ptr<NodoAVL> AVL::buscarNodo(const std::shared_ptr<NodoAVL>& nodo, i
 }
 
 Pedido AVL::buscar(int id) const {
-    auto nodo = buscarNodo(raiz, id);
-    if (!nodo) throw std::runtime_error("Pedido no encontrado");
-    return nodo->pedido;
+    try {
+        auto nodo = buscarNodo(raiz, id);
+        if (!nodo) throw std::runtime_error("Pedido no encontrado");
+        return nodo->pedido;
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        throw;
+    }
 }
 
 void AVL::eliminar(int id) {
@@ -123,9 +128,15 @@ void AVL::insertar(const Pedido& pedido) {
 }
 
 void AVL::actualizarEstado(int id, const std::string& nuevoEstado) {
-    auto nodo = buscarNodo(raiz, id);
-    if (!nodo) throw std::runtime_error("Pedido no encontrado");
-    nodo->pedido.setEstado(nuevoEstado.data());
+    try {
+        auto nodo = buscarNodo(raiz, id);
+        if (!nodo) {
+            throw std::runtime_error("Pedido no encontrado");
+        }
+        nodo->pedido.setEstado(nuevoEstado);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 

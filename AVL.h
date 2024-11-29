@@ -28,7 +28,7 @@ private:
     std::shared_ptr<NodoAVL> rotacionDerecha(const std::shared_ptr<NodoAVL>& nodo);
     std::shared_ptr<NodoAVL> rotacionIzquierda(const std::shared_ptr<NodoAVL>& nodo);
     std::shared_ptr<NodoAVL> insertarNodo(const std::shared_ptr<NodoAVL>& nodo, const Pedido& pedido);
-    std::shared_ptr<NodoAVL> AVL::eliminarNodo(const std::shared_ptr<NodoAVL>& nodo, int id);
+    std::shared_ptr<NodoAVL> eliminarNodo(const std::shared_ptr<NodoAVL>& nodo, int id);
     std::shared_ptr<NodoAVL> buscarNodo(const std::shared_ptr<NodoAVL> &nodo, int id) const;
 
     Pedido buscar(int id) const;

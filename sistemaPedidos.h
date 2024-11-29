@@ -5,69 +5,40 @@
 #ifndef SISTEMAPEDIDOS_H
 #define SISTEMAPEDIDOS_H
 
-#include <fstream>
-
 #include "Producto.h"
 #include "Pedido.h"
-#include "AVL.h"
-#include "MinHeap.h"
+#include "AVL.h"  // El árbol AVL
+#include "MinHeap.h" // El MinHeap
 #include <vector>
-#include <sstream>
+#include <iostream>
 
 class sistemaPedidos {
-
-    AVL<Producto> productos; // arbol AVL para productos
-    std::vector<Pedido> pedidos; // Vector para almacenar los pedidos realizados
-
-
-
-    void cargarProducto(const std::string& linea);
-    int calcularPrioridadPedido(const Pedido& pedido) const;
+private:
+    std::vector<Producto> productosCargados;  // Lista de productos cargados
+    AVL avl;  // Árbol AVL para pedidos
+    MinHeap minHeap;  // MinHeap para pedidos
 
 public:
+    // Constructor
+    sistemaPedidos(const std::vector<Producto>& productos);
 
-    sistemaPedidos();
-    std::vector<Producto> getProductos() const;
-
-    void mostrarMenu();
-
-    // Lee los productos desde archivo
-    void cargarProductosDesdeArchivo(const std::string& archivo);
-    AVL<Producto> getProductos() const;
-
-    // crear un pedido del usuario
+    // Mcrear un pedido del usuario
     Pedido crearPedidoUsuario();
-
-    // Entrega
-    void entregarPedido();
-
-    // Cancela
-    void cancelarPedido();
-
-    //Busca
-    void buscarPedido();
-
-    //Muestra las estadisticas
-    void mostrarEstadisticas();
-
-    size_t totalPedidos() const;
-    size_t pedidosEntregados() const;
-    size_t pedidosCancelados() const;
-
-
-    // procesar los pedidos (meterlos al AVL y MinHeap)
-    void procesarPedidos(const std::vector<Pedido>& pedidos);
-
-
-
- // mostrar el árbol AVL
-    void mostrarAVL() const;
-
-    // mostrar el MinHeap
-    void mostrarMinHeap() const;
 
     // generar pedidos aleatorios
     std::vector<Pedido> generarPedidosAleatorios(int cantidad);
+
+    // Mprocesar los pedidos (insertarlos en AVL y MinHeap)
+    void procesarPedidos(const std::vector<Pedido>& pedidos);
+
+    //  mostrar el arbol AVL
+    void mostrarAVL() const;
+
+    // M mostrar el MinHeap
+    void mostrarMinHeap() const;
+
+    // Cargar productos desde archivo (utilizando el código de lectura que ya tienes)
+    void cargarProductosDesdeArchivo(const std::string& archivo);
 };
 
 #endif  // SISTEMAPEDIDOS_H

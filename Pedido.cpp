@@ -31,7 +31,7 @@ void Pedido::setEstado(std::string nuevoEstado) { estado = nuevoEstado; }
 
 void Pedido::calcularPrioridad(int horaActual) {
     int tiempoEspera = horaActual - horaPedido;
-    prioridad = productos.size() * tiempoEspera; // CPP * (HA - HP)
+    prioridad = productos.size() * tiempoEspera; // usar formula para estoo CPP * (HA - HP)
     }
 
 // Métodos auxiliares
@@ -40,7 +40,6 @@ std::string Pedido::toString() const {
     os << "ID: " << id << "\n"
        << "Nombre: " << nombreCliente << "\n"
        << "Apellido: " << apellidoCliente << "\n"
-       << "Estado: " << (estado ? "Activo" : "Completado") << "\n"
        << "Hora del pedido: " << horaPedido << "\n"
        << "Prioridad: " << prioridad << "\n"
        << "Productos:\n";

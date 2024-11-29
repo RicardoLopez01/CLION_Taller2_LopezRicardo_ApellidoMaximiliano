@@ -9,134 +9,79 @@
 #include <filesystem>
 #include "sistemaPedidos.h"
 
+using namespace std;
+void crearPedido();
+void entregarPedido();
+void cancelarPedido();
+void buscarPedido();
+void cerrarSistema();
+void menuEstadisticas();
 
+int main() {
+    sistemaPedidos sistema({});
+    sistema.cargarProductosDesdeArchivo("productos_grill_of_victory.txt");
 
+    int opcion = 0;
 
-//Funciones para el menu principal.
-    void crearPedidoUsuario();
-    void entregarPedido();
-    void cancelarPedido();
-    void buscarPedido();
-    void menuEstadisticas();
-    void cerrarSistema();
+    do {
+        std::cout << "=**** Sistema de Gestion de Pedidos ****=\n";
+        std::cout << "Seleccione una opcion: ";
+        std::cout << "1) Crear un pedido de usuario\n";
+        std::cout << "2) Generar pedidos aleatorios\n";
+        std::cout << "3) Mostrar pedidos en AVL\n";
+        std::cout << "4) Mostrar pedidos en MinHeap\n";
+        std::cout << "5) Salir\n";
 
+        std::cin >> opcion;
 
-    void mostrarMenu() {
-        const std::string archivo = "productos_grill_of_victory.txt";
-
-        // Crear instancia
-        sistemaPedidos sistema;
-
-
-        // Verificar si el archivo existe antes de cargar
-        if (!std::filesystem::exists(archivo)) {
-            std::cerr << "Error: No se encontró el archivo '" << archivo << "'. Asegúrese de que esté en la carpeta correcta.\n";
-            return 1; // Salir del programa con error
-        }
-
-        // Intentar cargar productos
-        try {
-            sistema.cargarProductosDesdeArchivo(archivo);
-            std::cout << "Productos cargados automáticamente desde '" << archivo << "'.\n";
-        } catch (const std::exception& e) {
-            std::cerr << "Error al cargar los productos: " << e.what() << "\n";
-            return 1; // Salir del programa con error
-        }
-        int opcion;
-
-
-        std::cout << "************************\n";
-        std::cout << "     Menu principal\n";
-        std::cout << "************************\n";
-        std::cout << "1) Crear pedido\n";
-        std::cout << "2) Entregar pedido\n";
-        std::cout << "3) Cancelar pedido\n";
-        std::cout << "4) Buscar pedido\n";
-        std::cout << "5) Menu estadisticas\n";
-        std::cout << "6) Cerrar sistema\n";
-        std::cout << "Ingrese su opción: ";
-
-        switch (opcion) { // Menu principal
-            case 1:
-                if(productos.empty()) {
-                    std::cout<<"No hay productos cargados.\n";
-                }else {
-                    Pedido nuevoPedido = crearPedidoUsuario();
-                    procesarPedidos({nuevoPedido});
-                    std::cout<<"Pedido creado\n";
-                }
-            break;
-
-            case 2:
-                entregarPedido();
-            break;
-
-            case 3:
-                cancelarPedido();
-            break;
-
-            case 4:
-                buscarPedido();
-            break;
-
-            case 5:menuEstadisticas();
-            break;
-
-            case 6:cerrarSistema();
+        switch (opcion) {
+            case 1: {
+                // Crear un pedido de usuario
+                Pedido nuevoPedido = sistema.crearPedidoUsuario();
+                // Procesar el pedido (insertarlo en AVL y MinHeap)
+                std::vector<Pedido> pedidos = {nuevoPedido};
+                sistema.procesarPedidos(pedidos);
+                break;
+            }
+            case 2: {
+                // Generar pedidos aleatorios (por ejemplo, 10 pedidos)
+                std::vector<Pedido> pedidosAleatorios = sistema.generarPedidosAleatorios(10);
+                // Procesar estos pedidos
+                sistema.procesarPedidos(pedidosAleatorios);
+                break;
+            }
+            case 3: {
+                // Mostrar los pedidos en el AVL
+                std::cout << "Pedidos en el árbol AVL:\n";
+                sistema.mostrarAVL();
+                break;
+            }
+            case 4: {
+                // Mostrar los pedidos en el MinHeap
+                std::cout << "Pedidos en el MinHeap:\n";
+                sistema.mostrarMinHeap();
+                break;
+            }
+            case 5:
+                std::cout << "Saliendo del sistema...\n";
             break;
 
             default:
-                std::cout << "Opcion no valida";
-                std::cout << "Ingrese una opcion valida!";
-                break;
-        }
-        mostrarMenu();
-    }
-
-
-
-
-        void crearPedidoUsuario(){
-
+                std::cout << "Opción no válida. Intente de nuevo.\n";
+            break;
         }
 
-        void entregarPedido(){
+    } while (opcion != 5);
 
-        }
-
-        void cancelarPedido(){
-
-        }
-
-        void buscarPedido() {
-
-        }
-
-        void menuEstadisticas() {
-
-        }
-
-        void cerrarSistema() {
-            std::cout<<"Saliendo del sistema...\n";
-        }
+    return 0;
 
 
-        const std::string archivo = "productos_grill_of_victory.txt";
-        sistemaPedidos.cargarProductosDesdeArchivo(archivo);
-        std::cout << "Productos cargados automáticamente desde '" << archivo << "'.\n";
 
-    int main() {
+
+}
 
         AVL avl;
         MinHeap minHeap;
-        mostrarMenu();
-
-
-
-
-
-        return 0;
-    }
 
 
 
