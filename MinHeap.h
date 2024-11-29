@@ -13,7 +13,7 @@ class MinHeap {
 private:
     std::vector<Pedido> heap;
 
-    // Métodos auxiliares
+    // Metodos auxiliares
     void heapifyUp(int index);
     void heapifyDown(int index);
 

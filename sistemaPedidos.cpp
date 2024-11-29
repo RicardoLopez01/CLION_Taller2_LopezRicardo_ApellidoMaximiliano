@@ -101,9 +101,21 @@ void sistemaPedidos::mostrarMinHeap() const {
 }
 
 void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
-    // Este código es reciclado del profesor, pero revisaremos si funciona con el nombre del archivo.
-    // ID, Nombre del Producto, Precio (CLP)
 
+    /*
+    Si tu archivo de texto está en la raíz del proyecto (junto con CMakeLists.txt), pero el código no lo encuentra, verifica si CLion está configurado para buscar el archivo en la carpeta correcta.
+    Abre Run > Edit Configurations....
+    En el panel de configuraciones de ejecución, selecciona tu aplicación (generalmente Debug o Release).
+    Busca el campo Working directory y asegúrate de que esté apuntando a la raíz de tu proyecto (donde está el archivo .txt).
+    En mi caso use $ContentRoot$.
+
+    Este comentario/documentacion va mas que nada para poder explicar el proceso en el cual se lee el archivo, intente de mil formas y ninguna realmente daba en los otros equipos a que en mi pc de origen
+    si funciona, esos pasos permiten que funcione y fue probado en 4 computadores diferentes, si bien entiendo que deberia hacerse "a la buena" esta es la unica solucion que encontre.
+     */
+
+
+
+    // ID, Nombre del Producto, Precio (CLP)
 
     if (!std::filesystem::exists(archivo)) {
         std::cerr << "El archivo no existe en la ruta: " << archivo << std::endl;
@@ -139,7 +151,7 @@ void sistemaPedidos::cargarProductosDesdeArchivo(const std::string& archivo) {
             Producto producto(id, nombre, precio);
             productos.push_back(producto);  // Añadimos el producto al vector
         } else {
-            std::cerr << "Error al leer la línea: " << linea << std::endl;
+            std::cerr << "Error al leer la linea: " << linea << std::endl;
         }
     }
 
